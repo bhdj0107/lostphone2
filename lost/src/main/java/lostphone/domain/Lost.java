@@ -42,7 +42,7 @@ public class Lost {
         LostDeleted lostDeleted = new LostDeleted(this);
         lostDeleted.publishAfterCommit();
     }
-    
+
     public static LostRepository repository() {
         LostRepository lostRepository = LostApplication.applicationContext.getBean(
             LostRepository.class
@@ -55,6 +55,7 @@ public class Lost {
         ChangeLostContactCommand changeLostContactCommand
     ) {
         //implement business logic here:
+        this.contact = changeLostContactCommand.getContact();
 
         LostContactChanged lostContactChanged = new LostContactChanged(this);
         lostContactChanged.publishAfterCommit();
@@ -64,6 +65,7 @@ public class Lost {
     //<<< Clean Arch / Port Method
     public void changeLostInfo(ChangeLostInfoCommand changeLostInfoCommand) {
         //implement business logic here:
+        this.information = changeLostInfoCommand.getInformation();
 
         LostInfoChanged lostInfoChanged = new LostInfoChanged(this);
         lostInfoChanged.publishAfterCommit();
@@ -101,7 +103,8 @@ public class Lost {
         ReportLostDeviceAcquiredCommand reportLostDeviceAcquiredCommand
     ) {
         //implement business logic here:
-
+        this.status = 'ACQUIRED';
+        
         LostStatusChanged lostStatusChanged = new LostStatusChanged(this);
         lostStatusChanged.publishAfterCommit();
     }
