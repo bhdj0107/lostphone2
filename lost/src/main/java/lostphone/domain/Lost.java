@@ -35,11 +35,14 @@ public class Lost {
     public void onPostPersist() {
         LostReported lostReported = new LostReported(this);
         lostReported.publishAfterCommit();
+    }
 
+    @PostRemove
+    public void onPostRemove() {
         LostDeleted lostDeleted = new LostDeleted(this);
         lostDeleted.publishAfterCommit();
     }
-
+    
     public static LostRepository repository() {
         LostRepository lostRepository = LostApplication.applicationContext.getBean(
             LostRepository.class
