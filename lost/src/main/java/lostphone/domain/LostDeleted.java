@@ -12,7 +12,8 @@ import lostphone.infra.AbstractEvent;
 public class LostDeleted extends AbstractEvent {
 
     private Long id;
-
+    private Long deviceId;
+    
     public LostDeleted(Lost aggregate) {
         super(aggregate);
     }
