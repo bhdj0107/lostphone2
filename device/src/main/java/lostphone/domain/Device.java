@@ -83,27 +83,17 @@ public class Device {
     public static void changeDeviceStatus(LostReported lostReported) {
         //implement business logic here:
 
-        /** Example 1:  new item 
-        Device device = new Device();
-        repository().save(device);
-
-        DeviceStatusChanged deviceStatusChanged = new DeviceStatusChanged(device);
-        deviceStatusChanged.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-
-        repository().findById(lostReported.get???()).ifPresent(device->{
+        /** Example 2:  finding and process */
+        repository().findById(lostReported.getDeviceId()).ifPresent(device->{
             
-            device // do something
+            device.setStatus("SUSPENDED"); // do something
             repository().save(device);
 
             DeviceStatusChanged deviceStatusChanged = new DeviceStatusChanged(device);
             deviceStatusChanged.publishAfterCommit();
 
          });
-        */
+
 
     }
 
@@ -112,27 +102,17 @@ public class Device {
     public static void changeDeviceStatus(LostDeleted lostDeleted) {
         //implement business logic here:
 
-        /** Example 1:  new item 
-        Device device = new Device();
-        repository().save(device);
 
-        DeviceStatusChanged deviceStatusChanged = new DeviceStatusChanged(device);
-        deviceStatusChanged.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-
-        repository().findById(lostDeleted.get???()).ifPresent(device->{
+        /** Example 2:  finding and process */
+        repository().findById(lostDeleted.getDeviceId()).ifPresent(device->{
             
-            device // do something
+            device.setStatus("OK"); // do something
             repository().save(device);
 
             DeviceStatusChanged deviceStatusChanged = new DeviceStatusChanged(device);
             deviceStatusChanged.publishAfterCommit();
 
          });
-        */
 
     }
     //>>> Clean Arch / Port Method
