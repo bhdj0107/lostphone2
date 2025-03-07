@@ -103,7 +103,7 @@ public class Lost {
         ReportLostDeviceAcquiredCommand reportLostDeviceAcquiredCommand
     ) {
         //implement business logic here:
-        this.status = 'ACQUIRED';
+        this.status = "ACQUIRED";
         
         LostStatusChanged lostStatusChanged = new LostStatusChanged(this);
         lostStatusChanged.publishAfterCommit();
