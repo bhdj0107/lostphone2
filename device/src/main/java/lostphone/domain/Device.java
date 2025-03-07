@@ -56,6 +56,8 @@ public class Device {
         ChangeDeviceInfoCommand changeDeviceInfoCommand
     ) {
         //implement business logic here:
+        this.name = changeDeviceInfoCommand.getName();
+        this.information = changeDeviceInfoCommand.getInformation();
 
         DeviceInfoChanged deviceInfoChanged = new DeviceInfoChanged(this);
         deviceInfoChanged.publishAfterCommit();
@@ -67,6 +69,7 @@ public class Device {
         ChangeDeviceLocationCommand changeDeviceLocationCommand
     ) {
         //implement business logic here:
+        this.location = changeDeviceLocationCommand.getLocation();
 
         DeviceLocationChanged deviceLocationChanged = new DeviceLocationChanged(
             this
