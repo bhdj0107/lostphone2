@@ -34,13 +34,15 @@ public class Device {
     public void onPostPersist() {
         DeviceAssigned deviceAssigned = new DeviceAssigned(this);
         deviceAssigned.publishAfterCommit();
+    }
 
+    @PostRemove
+    public void onPostRemove() {
         DeviceDeleted deviceDeleted = new DeviceDeleted(this);
         deviceDeleted.publishAfterCommit();
-
-        DeviceStatusChanged deviceStatusChanged = new DeviceStatusChanged(this);
-        deviceStatusChanged.publishAfterCommit();
     }
+
+
 
     public static DeviceRepository repository() {
         DeviceRepository deviceRepository = DeviceApplication.applicationContext.getBean(
